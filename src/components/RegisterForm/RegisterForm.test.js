@@ -46,7 +46,6 @@ describe("Given the RegisterForm component", () => {
       inputField.textContent = "Hello";
       const resetButton = screen.getAllByRole("button")[1];
       userEvent.click(resetButton);
-      screen.debug();
 
       expect(mockFunction).toHaveBeenCalled();
     });
@@ -63,7 +62,6 @@ describe("Given the RegisterForm component", () => {
       inputField.textContent = "Hello";
       const submitButton = screen.getAllByRole("button")[0];
       userEvent.click(submitButton);
-      screen.debug();
 
       expect(mockFunction).toHaveBeenCalled();
     });
