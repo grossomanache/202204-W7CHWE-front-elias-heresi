@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { registerUserThunk } from "../../redux/thunks/thunks";
 
 const RegisterFormContainer = styled.div`
   width: 500px;
@@ -36,10 +38,12 @@ const RegisterFormContainer = styled.div`
 
 const RegisterForm = () => {
   const initialFields = { name: "", username: "", password: "" };
-  const [formInformation, setForminformation] = useState(initialFields);
+  const [formInformation, setFormInformation] = useState(initialFields);
+  const dispatch = useDispatch();
 
   const changeData = (event) => {
-    setForminformation({
+    event.preventDefault();
+    setFormInformation({
       ...formInformation,
       [event.target.id]: event.target.value,
     });
@@ -47,10 +51,12 @@ const RegisterForm = () => {
 
   const submitForm = (event) => {
     event.preventDefault();
+    dispatch(registerUserThunk(formInformation));
+    setFormInformation(initialFields);
   };
 
   const resetForm = () => {
-    setForminformation(initialFields);
+    setFormInformation(initialFields);
   };
   return (
     <RegisterFormContainer>
@@ -79,7 +85,7 @@ const RegisterForm = () => {
             Password:{" "}
             <input
               id="password"
-              type="text"
+              type="password"
               value={formInformation.password}
               onChange={changeData}
             />
