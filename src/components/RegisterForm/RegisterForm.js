@@ -45,12 +45,16 @@ const RegisterForm = () => {
     });
   };
 
+  const submitForm = (event) => {
+    event.preventDefault();
+  };
+
   const resetForm = () => {
     setForminformation(initialFields);
   };
   return (
     <RegisterFormContainer>
-      <form autoComplete="off" noValidate id="register">
+      <form autoComplete="off" noValidate id="register" onSubmit={submitForm}>
         <h2>Welcome trap star! Please register</h2>
         <div>
           <label>
