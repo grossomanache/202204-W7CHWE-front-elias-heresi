@@ -42,11 +42,30 @@ describe("Given the RegisterForm component", () => {
         </App>
       );
 
-      const setFormInformation = mockFunction;
+      const inputField = screen.getAllByRole("textbox")[0];
+      inputField.textContent = "Hello";
+      const resetButton = screen.getAllByRole("button")[1];
+      userEvent.click(resetButton);
+      screen.debug();
+
+      expect(mockFunction).toHaveBeenCalled();
+    });
+  });
+  describe("When the submit button is clicked", () => {
+    test("Then the submit form function will be dispatched", () => {
+      render(
+        <App>
+          <RegisterForm />
+        </App>
+      );
+
+      const inputField = screen.getAllByRole("textbox")[0];
+      inputField.textContent = "Hello";
       const submitButton = screen.getAllByRole("button")[0];
       userEvent.click(submitButton);
+      screen.debug();
 
-      expect(setFormInformation).toHaveBeenCalled();
+      expect(mockFunction).toHaveBeenCalled();
     });
   });
 });
