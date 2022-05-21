@@ -18,11 +18,7 @@ jest.mock("react", () => ({
 describe("Given the RegisterForm component", () => {
   describe("When instantiated", () => {
     test("Then the component will be rendered, containing one header and three input fields", () => {
-      render(
-        <App>
-          <RegisterForm />
-        </App>
-      );
+      render(<RegisterForm />);
 
       const expectedHeaders = 1;
       const expectedInputFields = 2;
@@ -36,11 +32,7 @@ describe("Given the RegisterForm component", () => {
   });
   describe("When the reset button is clicked", () => {
     test("Then the reset event function will be dispatched", () => {
-      render(
-        <App>
-          <RegisterForm />
-        </App>
-      );
+      render(<RegisterForm />);
 
       const inputField = screen.getAllByRole("textbox")[0];
       inputField.textContent = "Hello";
@@ -52,11 +44,7 @@ describe("Given the RegisterForm component", () => {
   });
   describe("When the submit button is clicked", () => {
     test("Then the submit form function will be dispatched", () => {
-      render(
-        <App>
-          <RegisterForm />
-        </App>
-      );
+      render(<RegisterForm />);
 
       const inputField = screen.getAllByRole("textbox")[0];
       inputField.textContent = "Hello";

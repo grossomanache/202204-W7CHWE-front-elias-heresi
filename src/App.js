@@ -1,7 +1,7 @@
-import RegisterForm from "./components/RegisterForm/RegisterForm";
 import styled from "styled-components";
 import { Provider } from "react-redux";
 import store from "./redux/store/store";
+import LoginForm from "./components/LoginForm.js/LoginForm";
 
 const AppContainer = styled.div`
   * {
@@ -12,7 +12,7 @@ function App() {
   return (
     <AppContainer>
       <Provider store={store}>
-        <RegisterForm />
+        <LoginForm />
       </Provider>
     </AppContainer>
   );
