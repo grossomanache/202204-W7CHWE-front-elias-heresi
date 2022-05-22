@@ -1,5 +1,5 @@
 import { screen, render } from "@testing-library/react";
-import App from "../../App";
+import userEvent from "@testing-library/user-event";
 import LoginForm from "./LoginForm";
 
 const mockFunction = jest.fn();
@@ -16,7 +16,7 @@ jest.mock("react", () => ({
 
 describe("Given the LoginForm component", () => {
   describe("When instantiated", () => {
-    test("Then the component will be rendered, containing one header and one input fields", () => {
+    test("Then the component will be rendered, containing one header and one text input fields", () => {
       render(<LoginForm />);
 
       const expectedHeaders = 1;
@@ -27,6 +27,27 @@ describe("Given the LoginForm component", () => {
 
       expect(searchedHeader).toHaveLength(expectedHeaders);
       expect(searchedInputFields).toHaveLength(expectedInputFields);
+    });
+  });
+  describe("When the submit button is clicked", () => {
+    test("Then the submit action will be dispatched", () => {
+      render(<LoginForm />);
+
+      const searchedButton = screen.getAllByRole("button")[0];
+      userEvent.click(searchedButton);
+
+      expect(mockFunction).toHaveBeenCalled();
+    });
+  });
+
+  describe("When the reset button is clicked", () => {
+    test("Then the reset action will be dispatched", () => {
+      render(<LoginForm />);
+
+      const searchedButton = screen.getAllByRole("button")[1];
+      userEvent.click(searchedButton);
+
+      expect(mockFunction).toHaveBeenCalled();
     });
   });
 });

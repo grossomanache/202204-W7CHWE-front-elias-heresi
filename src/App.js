@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import { Provider } from "react-redux";
 import store from "./redux/store/store";
-import LoginForm from "./components/LoginForm.js/LoginForm";
+import { Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Home from "./pages/Home";
 
 const AppContainer = styled.div`
   * {
@@ -12,7 +15,11 @@ function App() {
   return (
     <AppContainer>
       <Provider store={store}>
-        <LoginForm />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
       </Provider>
     </AppContainer>
   );

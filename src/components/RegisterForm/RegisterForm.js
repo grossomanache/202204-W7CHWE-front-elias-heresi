@@ -7,7 +7,7 @@ const RegisterFormContainer = styled.div`
   width: 500px;
   border: 1px grey solid;
   font-size: 35px;
-  background-color: pink;
+  background-color: thistle;
   h2 {
     text-align: center;
     margin: 25px 20px;
