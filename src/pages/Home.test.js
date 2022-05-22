@@ -5,8 +5,6 @@ import { mockUsers } from "../mocks/mockUsers";
 import store from "../redux/store/store";
 import Home from "./Home";
 
-const mockFunction = jest.fn();
-
 jest.mock("react-redux", () => ({
   ...jest.requireActual("react-redux"),
   useSelector: () => ({ contacts: mockUsers }),
@@ -22,8 +20,6 @@ describe("Given the Home page component", () => {
           </BrowserRouter>
         </Provider>
       );
-
-      screen.debug();
 
       const expectedImages = 1;
       const searchedImages = screen.getAllByRole("img");
