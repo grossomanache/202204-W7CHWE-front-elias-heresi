@@ -21,7 +21,9 @@
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/index.js",
-      "!src/reportWebVitals.js"
+      "!src/reportWebVitals.js",
+      "!src/redux/features/usersSlice.js",
+      "!src/redux/thunks/mocks/**.js"
     ]
   },
   "scripts": {
