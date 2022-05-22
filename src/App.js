@@ -4,6 +4,7 @@ import store from "./redux/store/store";
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Home from "./pages/Home";
 
 const AppContainer = styled.div`
   * {
@@ -15,6 +16,7 @@ function App() {
     <AppContainer>
       <Provider store={store}>
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
