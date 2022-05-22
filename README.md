@@ -27,7 +27,7 @@
 ### UI
 
 - Loading
-- Errors
+- Error
 
 ## Components
 
