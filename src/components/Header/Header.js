@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Login from "../../pages/Login";
 import { logoutActionCreator } from "../../redux/features/usersSlice";
 
 const HeaderContainer = styled.div`
@@ -12,6 +11,7 @@ const HeaderContainer = styled.div`
   font-size: 24px;
   border-bottom: 1px grey solid;
   margin-bottom: 15px;
+  width: 100%;
   p {
     margin: 0;
     padding: 18px;
