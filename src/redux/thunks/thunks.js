@@ -5,8 +5,6 @@ import {
   loginActionCreator,
 } from "../features/usersSlice";
 
-const token = `Bearer ${localStorage.getItem("token")}`;
-
 export const registerUserThunk = (registerInformation) => async (dispatch) => {
   const route = `${process.env.REACT_APP_API_URL}/users/register`;
   await axios.post(route, registerInformation);
@@ -22,8 +20,9 @@ export const loginUserThunk = (loginInformation) => async (dispatch) => {
   dispatch(loginActionCreator(userInfo));
 };
 
-export const getUsersThunk = () => async (dispatch) => {
+export const getUsersThunk = (key) => async (dispatch) => {
   const route = `${process.env.REACT_APP_API_URL}/users/list`;
+  const token = `Bearer ${key}`;
   const { data } = await axios.get(route, {
     headers: { Authorization: token },
   });

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { getUsersThunk, loginUserThunk } from "../../redux/thunks/thunks";
 
@@ -40,7 +40,14 @@ const LoginForm = () => {
   const initialFields = { username: "", password: "" };
   const [loginInformation, setLoginInformation] = useState(initialFields);
   const dispatch = useDispatch();
-  dispatch(getUsersThunk());
+
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (token) {
+      dispatch(getUsersThunk(token));
+    }
+  }, [token, dispatch]);
 
   const changeData = (event) => {
     event.preventDefault();
@@ -50,15 +57,16 @@ const LoginForm = () => {
     });
   };
 
-  const submitForm = (event) => {
+  const submitForm = async (event) => {
     event.preventDefault();
-    dispatch(loginUserThunk(loginInformation));
+    await dispatch(loginUserThunk(loginInformation));
     setLoginInformation(initialFields);
   };
 
   const resetForm = () => {
     setLoginInformation(initialFields);
   };
+
   return (
     <LoginFormContainer>
       <form autoComplete="off" noValidate id="login" onSubmit={submitForm}>

@@ -26,6 +26,10 @@ const userSlice = createSlice({
       ...users,
       contacts: action.payload,
     }),
+    resetUsers: (users, action) => ({
+      ...users,
+      contacts: [],
+    }),
   },
 });
 
@@ -33,5 +37,6 @@ export const {
   login: loginActionCreator,
   logout: logoutActionCreator,
   loadUsers: loadUsersActionCreator,
+  resetUsers: resetUsersActionCreator,
 } = userSlice.actions;
 export default userSlice.reducer;
