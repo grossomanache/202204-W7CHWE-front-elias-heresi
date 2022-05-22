@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { loginUserThunk } from "../../redux/thunks/thunks";
+import { getUsersThunk, loginUserThunk } from "../../redux/thunks/thunks";
 
 const LoginFormContainer = styled.div`
   width: 500px;
@@ -40,6 +40,7 @@ const LoginForm = () => {
   const initialFields = { username: "", password: "" };
   const [loginInformation, setLoginInformation] = useState(initialFields);
   const dispatch = useDispatch();
+  dispatch(getUsersThunk());
 
   const changeData = (event) => {
     event.preventDefault();

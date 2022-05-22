@@ -1,5 +1,5 @@
 import { rest } from "msw";
-import { mockResponse } from "../../../mocks/mockUsers";
+import { mockResponse, mockUsers } from "../../../mocks/mockUsers";
 
 export const handlers = [
   rest.post(
@@ -12,4 +12,7 @@ export const handlers = [
         })
       )
   ),
+
+  rest.get(`${process.env.REACT_APP_API_URL}/users/list`),
+  (req, res, ctx) => res(ctx.status(200), ctx.json(mockUsers)),
 ];

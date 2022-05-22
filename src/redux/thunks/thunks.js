@@ -1,6 +1,11 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-import { loginActionCreator } from "../features/usersSlice";
+import {
+  loadUsersActionCreator,
+  loginActionCreator,
+} from "../features/usersSlice";
+
+const token = `Bearer ${localStorage.getItem("token")}`;
 
 export const registerUserThunk = (registerInformation) => async (dispatch) => {
   const route = `${process.env.REACT_APP_API_URL}/users/register`;
@@ -15,4 +20,12 @@ export const loginUserThunk = (loginInformation) => async (dispatch) => {
   localStorage.setItem("token", token);
   const userInfo = jwtDecode(token);
   dispatch(loginActionCreator(userInfo));
+};
+
+export const getUsersThunk = () => async (dispatch) => {
+  const route = `${process.env.REACT_APP_API_URL}/users/list`;
+  const { data } = await axios.get(route, {
+    headers: { Authorization: token },
+  });
+  dispatch(loadUsersActionCreator(data));
 };

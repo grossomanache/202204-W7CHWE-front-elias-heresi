@@ -54,7 +54,7 @@
 ## Versions
 
 - V0: Register user
-  - V0.1: Login existing user
+  - **V0.1: Login existing user**
 - V1: Home page, showing all existing users
 - V2: Logged-in user detailed profile
 - V3: Other users detailed profile
