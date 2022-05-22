@@ -1,4 +1,8 @@
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Login from "../../pages/Login";
+import { logoutActionCreator } from "../../redux/features/usersSlice";
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -19,21 +23,35 @@ const HeaderContainer = styled.div`
 `;
 
 const Header = () => {
+  const dispatch = useDispatch();
   const token = localStorage.getItem("token");
+
+  const logout = () => {
+    localStorage.clear();
+    dispatch(logoutActionCreator());
+  };
 
   return (
     <HeaderContainer>
       {token ? (
         <>
           <p>Friends</p>
-          <h1>TRAPPERZ</h1>
-          <p>Logout</p>
+          <Link to="/">
+            <h1>TRAPPERZ</h1>
+          </Link>
+          <p onClick={logout}>Logout</p>
         </>
       ) : (
         <>
-          <p>Register</p>
-          <h1>TRAPPERZ</h1>
-          <p>Login</p>
+          <Link to="/register">
+            <p>Register</p>
+          </Link>
+          <Link to="/">
+            <h1>TRAPPERZ</h1>
+          </Link>
+          <Link to="/login">
+            <p>Login</p>
+          </Link>
         </>
       )}
     </HeaderContainer>
