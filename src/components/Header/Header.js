@@ -1,7 +1,10 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { logoutActionCreator } from "../../redux/features/usersSlice";
+import {
+  logoutActionCreator,
+  resetUsersActionCreator,
+} from "../../redux/features/usersSlice";
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -29,6 +32,7 @@ const Header = () => {
   const logout = () => {
     localStorage.clear();
     dispatch(logoutActionCreator());
+    dispatch(resetUsersActionCreator());
   };
 
   return (
