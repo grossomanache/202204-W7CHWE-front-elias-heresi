@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -6,7 +5,6 @@ import {
   logoutActionCreator,
   resetUsersActionCreator,
 } from "../../redux/features/usersSlice";
-import { getUsersThunk } from "../../redux/thunks/thunks";
 
 const HeaderContainer = styled.div`
   display: flex;
